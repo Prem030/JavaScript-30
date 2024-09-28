@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Heart trail project</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+
+span{
+    background: url('https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-512.png');
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-size: cover;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% , -50%);
+    pointer-events: none;
+    animation: animate 6s linear;
+}
+
+@keyframes animate {
+    0%{
+        transform: translate(-50% , -50%);
+        opacity : 1;
+        filter: hue-rotate(0);
+    }
+
+    100%{
+        transform: translate(-50% , -5000%);
+        opacity : 0;
+        filter: hue-rotate(720deg);
+    }
+}
+    </style>
+</head>
+<body>
+   
+    
+</body>
+    <script>
+        const bodyE1 = document.querySelector('body');
+
+bodyE1.addEventListener('mousemove', (e)=> {
+    
+    const xPos = e.offsetX;
+    const ypos = e.offsetY;
+    const spanE1 = document.createElement('span');
+    spanE1.style.left = xPos + 'px';
+    spanE1.style.top = ypos + 'px'
+    const size = Math.random()*100 + 1;
+    spanE1.style.width = size + 'px';
+    spanE1.style.height = size + 'px'
+    bodyE1.appendChild(spanE1);
+    setTimeout(() => {
+        spanE1.remove();
+    }, 3000);
+})
+    </script>
+</html>
