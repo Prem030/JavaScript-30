@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auto-text-animation</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 90vh;
+            background-color: tomato;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body>
+    <h1>My hobbies are  <span class="carrer"></span></h1>
+
+</body>
+<script>
+    
+     
+    const hobbies = ['Gaming' , 'sketching' , 'guitar' ];
+    let arrayIndex = 0;
+    let wordIndex = 0;
+    let word;
+    function display(character) {
+        document.querySelector('.carrer').innerHTML += character;
+    }
+    function clearHtml() {
+        document.querySelector('.carrer').innerHTML = '';
+    }
+    
+    
+    
+        setInterval(() => {
+            word = hobbies[arrayIndex];
+            display(word[wordIndex++]);
+            if (wordIndex  > word.length  ) {
+                wordIndex = 0;
+                word = '';
+                clearHtml();
+                if (arrayIndex  > hobbies.length  ) {
+                    arrayIndex = 0;
+                }
+                arrayIndex++;
+            }
+            if (arrayIndex  > hobbies.length -1 ) {
+                    arrayIndex = 0;
+                }
+        }, 500);
+
+
+
+</script>
+</html>
