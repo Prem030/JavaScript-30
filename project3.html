@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calander</title>
+    <style>
+        body{
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #6A63D2;
+            font-family: cursive;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 350px;
+            text-align: center;
+        }
+
+        .month{
+            background-color: #FF5100;
+            color: white;
+            width: 100%;
+            padding: .5rem;
+            font-size: 2rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+        }
+        .date-year{
+            background-color: white;
+            width: inherit;
+            padding: 1rem .5rem;
+            
+        }
+        .clock{
+            
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            width: 100%;
+            background-color:#FF5100;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-family: cursive;
+            font-weight: 900;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .common{
+            margin: .5rem;          
+            border-radius: 5px;
+        }
+        .day{
+            color: #B0B0B0;
+            font-size: 1.5rem;
+        }
+        .year{
+            color:#B0B0B0;
+            font-size: 1.5rem;
+        }
+        .date{
+            font-size: 5rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="month"></div>
+        <div class="date-year">
+            <div class="day"></div>
+            <div class="date"></div>
+            <div class="year"></div>
+        </div>
+        <div class="clock"> 
+            <span class="hr common"></span> : 
+            <span class="min common"></span> : 
+            <span class="second common"></span> 
+            <span class="am-pm common"> </span>
+        </div>
+    </div>
+</body>
+<script>
+    setInterval(() => {
+        let date = new Date();
+        let day = date.getUTCDate();
+        let month = date.getUTCMonth();
+        let year = date.getUTCFullYear()
+        let dayName = date.getUTCDay()
+      
+
+        let dayArray = ['Sunday' , 'Monday' , 'Tuesday ','Wednesday' , 'Thrusday' , 'Friday' , 'Saturday'];
+        let monthArray =  ["January","February","March","April","May","June","July",
+        "August","September","October","November","December"];
+        document.querySelector('.month').innerHTML = monthArray[month]
+        document.querySelector('.day').innerHTML = `${dayArray[dayName]}`
+        document.querySelector('.date').innerHTML = day
+        document.querySelector('.year').innerHTML = year;
+
+
+        let newformat = date.getHours() >= 12 ? 'PM' : 'AM';
+        document.querySelector('.hr').innerHTML = date.getHours();
+        document.querySelector('.min').innerHTML = date.getMinutes();
+        document.querySelector('.second').innerHTML = date.getSeconds();
+        document.querySelector('.am-pm').innerHTML = newformat;
+    }, 1000);
+
+</script>
+</html>
