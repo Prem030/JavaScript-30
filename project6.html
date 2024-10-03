@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark mode toggel</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        .containerr{
+            width: 80px;
+            height: 30px;
+            border: 2px solid black;
+            border-radius: 50px;
+            padding: 2px ;
+            display: flex;
+                    
+            
+            
+        }
+        .circle{
+            width: 25px;
+            height:25px;
+            border: 2px solid black;
+            border-radius: 50%;
+            box-shadow: 2px 0px 5px black inset ;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="containerr">
+        
+            <div class="circle"></div>
+        
+        
+    </div>
+    
+</body>
+<script>
+    let defaultMode = 'light';
+    const circleButton = document.querySelector('.circle');
+    const container = document.querySelector('.containerr');
+    
+    function darkMode(){
+        circleButton.style.transform = 'translate(50px)';
+        circleButton.style.transition = '1s'
+        circleButton.style.background = 'black';
+        document.querySelector('body').style.background = 'black';
+        
+        container.style.background='white'
+        defaultMode='dark';
+        
+    }
+    function lightMode() {
+        circleButton.style.transform = 'translate(0px)';
+        circleButton.style.transition = '1s'
+        circleButton.style.background = 'white';
+        document.querySelector('body').style.background = 'white';
+        
+        container.style.background='white'
+        defaultMode='light';
+    }
+    container.addEventListener( 'click' , () => {
+        if(defaultMode === 'light')
+            darkMode();
+        else
+            lightMode()
+        
+
+    })
+</script>
+</html>
