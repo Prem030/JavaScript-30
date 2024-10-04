@@ -1,0 +1,122 @@
+<!-- Real-time character counter  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real time character counter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #81b29a;
+            font-family: cursive;
+        }
+
+        
+
+        .container {
+            width: 550px;
+            height: 400px;
+            
+            background-color: #f2cc8f;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            align-items: center;
+            padding: 1rem;
+            box-shadow: 1px 0px 14px 1px rgba(0, 0, 0, 0.432);
+            margin: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .total-remaining {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            font-size: 1.3rem;
+        }
+
+        form {
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            padding: .5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Real time character coutner</h2>
+        <form action="">
+            <textarea name="" id="" cols="50" rows="10" placeholder="Please write your text here" maxlength="150"></textarea>
+        </form>
+        <div class="total-remaining">
+            <div class="total">
+                <p>Total Character : <span class="count" style="color: green;">0</span></p>
+            </div>
+            <div class="remaining">
+                <p>Reamining : <span class="remainingCount" style="color: red;">50</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    
+    const textArea = document.querySelector('textarea');
+    const count = document.querySelector('.count');
+    const remainingCount = document.querySelector('.remainingCount');
+    let remaining = textArea.maxLength;
+    
+    remainingCount.innerText = textArea.maxLength;
+    textArea.addEventListener('keydown', (event) => {
+
+        let wordCount = textArea.value.length
+        if (event.key === 'Backspace') {
+            if (wordCount == 0)
+                wordCount = 0;
+            else {
+                --wordCount
+                remaining++;
+                remainingCount.innerHTML = `${remaining}`;
+                count.innerHTML = `${wordCount}`
+            }
+        }
+        else if (wordCount >= textArea.maxLength) {
+            alert("you have crossed the character limits")
+            remainingCount.innerHTML= 0;
+            event.preventDefault();
+        }
+
+
+        else {
+            wordCount++;
+            remaining--;
+            remainingCount.innerHTML = `${remaining}`;
+            count.innerHTML = `${wordCount}`
+        }
+
+
+    })
+</script>
+
+</html>
