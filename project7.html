@@ -61,6 +61,11 @@
             border-radius: 5px;
             padding: .5rem;
         }
+        .limit{
+            margin: 1rem;
+            padding: .5rem;
+
+        }
     </style>
 </head>
 
@@ -68,16 +73,17 @@
     <div class="container">
         <h2>Real time character coutner</h2>
         <form action="">
-            <textarea name="" id="" cols="50" rows="10" placeholder="Please write your text here" maxlength="150"></textarea>
+            <textarea name="" id="" cols="50" rows="10" placeholder="Please write your text here" maxlength="50"></textarea>
         </form>
         <div class="total-remaining">
             <div class="total">
                 <p>Total Character : <span class="count" style="color: green;">0</span></p>
             </div>
             <div class="remaining">
-                <p>Reamining : <span class="remainingCount" style="color: red;">50</span></p>
+                <p>Remaining : <span class="remainingCount" style="color: red;">50</span></p>
             </div>
         </div>
+        <button class="limit">add Coustome limit</button>
     </div>
 </body>
 <script>
@@ -85,11 +91,29 @@
     const textArea = document.querySelector('textarea');
     const count = document.querySelector('.count');
     const remainingCount = document.querySelector('.remainingCount');
-    let remaining = textArea.maxLength;
+
     
+    let remaining = textArea.maxLength;
+    let charLimit;
+    const button = document.querySelector('.limit');
+    button.addEventListener('click' , ()=>{
+         charLimit = Number(prompt('enter a limit'));
+        
+        
+        if(charLimit < 0 || isNaN(charLimit)  )
+            alert('please enter a valid limit');
+        else {
+            textArea.maxLength = charLimit;
+            remainingCount.innerHTML = charLimit;
+            remaining = textArea.maxLength;
+        }   
+
+            
+    })
+
     remainingCount.innerText = textArea.maxLength;
     textArea.addEventListener('keydown', (event) => {
-
+       
         let wordCount = textArea.value.length
         if (event.key === 'Backspace') {
             if (wordCount == 0)
@@ -102,7 +126,7 @@
             }
         }
         else if (wordCount >= textArea.maxLength) {
-            alert("you have crossed the character limits")
+            alert("you have crossed the character limit")
             remainingCount.innerHTML= 0;
             event.preventDefault();
         }
@@ -113,6 +137,8 @@
             remaining--;
             remainingCount.innerHTML = `${remaining}`;
             count.innerHTML = `${wordCount}`
+            
+            
         }
 
 
