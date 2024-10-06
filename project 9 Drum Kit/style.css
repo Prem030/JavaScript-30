@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding : 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+body{
+    background : url(background.jpg) no-repeat  center ;
+    
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container .play{
+    transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+.container{
+    width:60%;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    transform: translateY(-30px);
+    
+}
+
+.btn{
+    margin: 1rem ;
+    border:5px solid black;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.678);
+    width: 150px;
+    
+    
+}
+
+p{
+    font-size: .6rem;
+    text-align: center;
+    color: rgb(241,196,0);
+}
+
+h1{
+    font-family: "Sanchez", serif;
+
+}
