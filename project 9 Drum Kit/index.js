@@ -19,10 +19,10 @@ html.addEventListener('keydown' , (event) =>{
 
 const allButton = document.querySelectorAll('.btn');
 html.addEventListener('keyup' , () =>{
-    keys.forEach( element =>{
+    
         allButton.forEach(element =>{
             element.classList.remove('play')
-        })
+        
             
     })
     
